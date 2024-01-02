@@ -37,7 +37,7 @@ summarise_chapter_df <- function(X) {
       tex_chapter = paste0("\\chapter{", month_name, "}", tex_chapter)
     ) %>%
     mutate(
-      path = here::here("src", "chapter", paste0(month, ".tex"))
+      path = file.path(Sys.getenv("OUTPATH"), paste0(month, ".tex"))
     )
 }
 
