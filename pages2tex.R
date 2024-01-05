@@ -1,5 +1,3 @@
-library(dplyr)
-
 source("R/build_functions.R")
 source("R/pagesbook.R")
 

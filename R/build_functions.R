@@ -7,36 +7,36 @@ source_folder <- function(year = 2022, month = 9) {
 pages_df <- function(X) {
   tibble::tibble(
     paths = list.files(X, full.names = TRUE)
-  ) %>%
+  ) |>
   dplyr::mutate(
     ymd = lubridate::ymd(gsub(".md", "", basename(paths)))
-  ) %>%
+  ) |>
   dplyr::mutate(
     text = purrr::map_chr(paths, readr::read_file)
   )
 }
 
 create_chapter_df <- function(pages) {
-  pages %>%
-    augment_time_label() %>%
-    repair_latex() %>%
-    left_align() %>%
+  pages |>
+    augment_time_label() |>
+    repair_latex() |>
+    left_align() |>
     add_heading()
 }
 
 summarise_chapter_df <- function(X) {
 
   month <- lubridate::month(X$ymd[1])
-  month_name <- lubridate::month(X$ymd[1], label = TRUE, abbr = FALSE) %>% as.character()
+  month_name <- lubridate::month(X$ymd[1], label = TRUE, abbr = FALSE) |> as.character()
 
-  X %>%
+  X |>
     dplyr::summarise(
       tex_chapter = paste0(tex_w_heading, collapse = "\n")
-    ) %>%
+    ) |>
     dplyr::mutate(
       tex_chapter = paste0("\\chapter{", month_name, "}", tex_chapter)
-    ) %>%
-    mutate(
+    ) |>
+    dplyr::mutate(
       path = file.path(Sys.getenv("OUTPATH"), paste0(month, ".tex"))
     )
 }

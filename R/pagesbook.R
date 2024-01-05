@@ -6,25 +6,25 @@ read_pages <- function(path, years = c(2021)) {
       pattern = "[0123456789]{2}_[0123456789]{2}_[0123456789]{2}.md$",
       full.names = TRUE
     )
-  ) %>%
+  ) |>
   dplyr::mutate(
     text = purrr::map_chr(paths, readr::read_file)
-  ) %>%
+  ) |>
   dplyr::mutate(
     ymd = lubridate::ymd(gsub(".md", "", basename(paths)))
-  ) %>%
+  ) |>
   dplyr::filter(lubridate::year(ymd) %in% years)
 }
 
 augment_time_label <- function(X) {
-  X %>%
+  X |>
     dplyr::mutate(
       ts_s = stringr::str_match(text, "% (.*?) (GMT|BST)")[, 2],
       ts = lubridate::parse_date_time(ts_s, orders = c("a d b H:M:S", "a b d H:M:S"))
-    ) %>%
+    ) |>
     dplyr::mutate(
       time_label = format(ts, format = "%I:%M %p")
-    ) %>%
+    ) |>
     dplyr::mutate(
       text = stringr::str_replace(text, "% [A-Za-z]+\\s+\\d+ [A-Za-z]+ \\d{2}:\\d{2}:\\d{2} (GMT|BST) \\d+\n\n", ""),
       text = stringr::str_replace(text, "% [A-Za-z]+\\s+[A-Za-z]+\\s+\\d+ \\d{2}:\\d{2}:\\d{2} (GMT|BST) \\d+\n\n", ""),
@@ -32,7 +32,7 @@ augment_time_label <- function(X) {
 }
 
 repair_latex <- function(X) {
-  X %>%
+  X |>
     dplyr::mutate(
       tex = stringr::str_replace_all(text, "\\&", "\\\\&"),
       tex = stringr::str_replace_all(tex, "\\_", "\\\\_"),
@@ -43,7 +43,7 @@ repair_latex <- function(X) {
 }
 
 add_heading <- function(X) {
-  X %>%
+  X |>
    dplyr::mutate(
       heading = paste(
         lubridate::wday(ymd, label = TRUE, abbr = FALSE),
@@ -51,19 +51,19 @@ add_heading <- function(X) {
         lubridate::month(ymd, label = TRUE, abbr = FALSE),
         lubridate::year(ymd)
       )
-    ) %>%
+    ) |>
     dplyr::mutate(
       tex_w_heading = paste0("\\section{", heading, "}\n\n", "\\hspace*{\\fill}", time_label, "\\vspace{5mm}\n\n", tex)
     )
 }
 
 create_chapters <- function(X) {
-  X %>%
-    dplyr::mutate(month = lubridate::month(ymd)) %>%
-    dplyr::group_by(month) %>%
+  X |>
+    dplyr::mutate(month = lubridate::month(ymd)) |>
+    dplyr::group_by(month) |>
     dplyr::summarise(
       tex_chapter = paste0(tex_w_heading, collapse = "\n")
-    ) %>%
+    ) |>
     dplyr::mutate(
       tex_chapter = paste0("\\chapter{", lubridate::month(month, label = TRUE, abbr = FALSE), "}", tex_chapter)
     )
@@ -131,8 +131,8 @@ gqg <- function(x, textwidth) {
 }
 
 left_align <- function(X, textwidth = 72) {
-  X %>%
-    mutate(
+  X |>
+    dplyr::mutate(
       tex = purrr::map_chr(tex, gqg, textwidth = textwidth)
     )
 }
