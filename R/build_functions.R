@@ -41,6 +41,7 @@ summarise_chapter_df <- function(X) {
     )
 }
 
-write_latex <- function(chapters_) {
-  purrr::walk2(.x = chapters_$tex_chapter, .y = chapters_$path, .f = readr::write_file)
+write_latex <- function(chapters) {
+  purrr::walk(dirname(chapters$path), dir.create, recursive = TRUE, showWarnings = FALSE)
+  purrr::walk2(.x = chapters$tex_chapter, .y = chapters$path, .f = readr::write_file)
 }
