@@ -9,4 +9,4 @@ source_folder(year = this_year, month = this_month) |>
   pages_df() |>
   create_chapter_df() |>
   summarise_chapter_df() |>
-  write_latex()
+  write_latex(output_location = Sys.getenv("OUTPATH"))
