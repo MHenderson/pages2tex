@@ -37,11 +37,11 @@ summarise_chapter_df <- function(X) {
       tex_chapter = paste0("\\chapter{", month_name, "}", tex_chapter)
     ) |>
     dplyr::mutate(
-      path = file.path(Sys.getenv("OUTPATH"), paste0(month, ".tex"))
+      path = file.path(paste0(month, ".tex"))
     )
 }
 
-write_latex <- function(chapters) {
-  purrr::walk(dirname(chapters$path), dir.create, recursive = TRUE, showWarnings = FALSE)
-  purrr::walk2(.x = chapters$tex_chapter, .y = chapters$path, .f = readr::write_file)
+write_latex <- function(chapters, output_location = '.') {
+  purrr::walk(dirname(file.path(output_location, chapters$path)), dir.create, recursive = TRUE, showWarnings = FALSE)
+  purrr::walk2(.x = chapters$tex_chapter, .y = file.path(output_location, chapters$path), .f = readr::write_file)
 }
