@@ -1,5 +1,4 @@
 source("R/build_functions.R")
-source("R/pagesbook.R")
 
 today <- Sys.Date()
 this_month <- lubridate::month(today)

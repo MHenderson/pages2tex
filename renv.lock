@@ -170,6 +170,24 @@
       ],
       "Hash": "b8552d117e1b808b09a832f589b79035"
     },
+    "llinyn": {
+      "Package": "llinyn",
+      "Version": "0.0.0.9001",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "MHenderson",
+      "RemoteRepo": "llinyn",
+      "RemoteRef": "main",
+      "RemoteSha": "886b793f499f7fab75ffecdee9ad8cf1563a79e3",
+      "Requirements": [
+        "dplyr",
+        "lubridate",
+        "purrr",
+        "stringr"
+      ],
+      "Hash": "142016247955f93d42a6f05d72d3a7ba"
+    },
     "lubridate": {
       "Package": "lubridate",
       "Version": "1.9.3",
