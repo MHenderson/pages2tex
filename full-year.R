@@ -1,3 +1,7 @@
+source("R/create-chapter-df.R")
+source("R/create-chapters.R")
+source("R/write-latex.R")
+
 # source folder needs to modified slightly
 X <- file.path(Sys.getenv("PAGESPATH"), "src", 22) 
 
@@ -22,5 +26,6 @@ XX <- X |>
     path = file.path(paste0(month, ".tex"))
   )
 
-write_latex(XX, output_location = "./chapters/")
+# this is slightly different from the update script - which uses the OUTPATH environment variable (usually set to pagesbook-2024 folder)
+write_latex(XX, output_location = file.path("/Users/matthew/001_Project/Writing/Memoir/pagesbook-2022/src/chapter/"))
 
