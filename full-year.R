@@ -1,5 +1,5 @@
-source("R/create-chapter-df.R")
-source("R/create-chapters.R")
+library(pages2df)
+
 source("R/write-latex.R")
 
 # source folder needs to modified slightly
