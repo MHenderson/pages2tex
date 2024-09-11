@@ -205,6 +205,26 @@
       ],
       "Hash": "7ce2733a9826b3aeb1775d56fd305472"
     },
+    "pages2df": {
+      "Package": "pages2df",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "MHenderson",
+      "RemoteRepo": "pages2df",
+      "RemoteRef": "main",
+      "RemoteSha": "1da192da817d1146b6ea2eab921c9e1538b03418",
+      "Requirements": [
+        "dplyr",
+        "llinyn",
+        "lubridate",
+        "purrr",
+        "readr",
+        "tibble"
+      ],
+      "Hash": "fef24c226cf0edb6cabcf85c394432e2"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.9.0",
