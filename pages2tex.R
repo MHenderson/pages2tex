@@ -1,9 +1,7 @@
 library(lubridate)
+library(pages2df)
 
-source("R/create-chapter-df.R")
-source("R/pages-df.R")
 source("R/source-folder.R")
-source("R/summarise-chapter-df.R")
 source("R/write-latex.R")
 
 today <- Sys.Date()
