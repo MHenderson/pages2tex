@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "http://rspm/default/latest"
+        "URL": "https://packagemanager.posit.co/cran/latest"
       }
     ]
   },
@@ -207,14 +207,9 @@
     },
     "pages2df": {
       "Package": "pages2df",
-      "Version": "0.0.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "MHenderson",
-      "RemoteRepo": "pages2df",
-      "RemoteRef": "main",
-      "RemoteSha": "1da192da817d1146b6ea2eab921c9e1538b03418",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "https://mhenderson.r-universe.dev",
       "Requirements": [
         "dplyr",
         "llinyn",
@@ -223,7 +218,7 @@
         "readr",
         "tibble"
       ],
-      "Hash": "fef24c226cf0edb6cabcf85c394432e2"
+      "Hash": "1adba873644cfb753e909639a89a9514"
     },
     "pillar": {
       "Package": "pillar",
@@ -339,7 +334,7 @@
       "Package": "stringi",
       "Version": "1.8.4",
       "Source": "Repository",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/__linux__/focal/latest",
       "Requirements": [
         "R",
         "stats",
@@ -352,7 +347,7 @@
       "Package": "stringr",
       "Version": "1.5.1",
       "Source": "Repository",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "https://packagemanager.posit.co/cran/__linux__/focal/latest",
       "Requirements": [
         "R",
         "cli",
